@@ -7,6 +7,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
+from app.database import initialize_database
 from app.database.mysql_connector import get_pool_status, init_connection_pool, ping_database
 from app.middleware.logging import RequestLoggingMiddleware, app_logger, configure_logging, log_json
 from app.routes.attendance import router as attendance_router
@@ -20,6 +21,8 @@ from app.routes.students import router as students_router
 async def lifespan(app: FastAPI):
     configure_logging(settings.LOG_LEVEL)
     init_connection_pool()
+    initialize_database()
+
     log_json(
         "info",
         "application_startup",

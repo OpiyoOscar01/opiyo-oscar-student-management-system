@@ -28,6 +28,8 @@ class Settings:
     MYSQL_CONNECT_TIMEOUT = int(os.getenv("MYSQL_CONNECT_TIMEOUT", "10"))
     MYSQL_MAX_RETRIES = int(os.getenv("MYSQL_MAX_RETRIES", "3"))
     MYSQL_RETRY_DELAY_SECONDS = float(os.getenv("MYSQL_RETRY_DELAY_SECONDS", "1.5"))
+    AUTO_SEED_ON_STARTUP = os.getenv("AUTO_SEED_ON_STARTUP", "true").lower() == "true"
+
 
     CORS_ORIGINS = [
         origin.strip()

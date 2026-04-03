@@ -6,6 +6,7 @@ from .mysql_connector import (
     ping_database,
     get_pool_status,
 )
+from .db_initializer import initialize_database
 
 __all__ = [
     "init_connection_pool",
@@ -14,4 +15,5 @@ __all__ = [
     "execute_query",
     "ping_database",
     "get_pool_status",
+    "initialize_database",
 ]
