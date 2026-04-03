@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Student Management System</title>
+  <title>Student Management System | Opiyo Oscar</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
@@ -11,27 +11,31 @@
       color-scheme: light;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background:
-        radial-gradient(circle at top left, rgba(59,130,246,0.12), transparent 30%),
-        radial-gradient(circle at top right, rgba(16,185,129,0.10), transparent 25%),
-        linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+        radial-gradient(circle at top left, rgba(37,99,235,0.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(16,185,129,0.10), transparent 24%),
+        linear-gradient(180deg, #f8fafc 0%, #eff6ff 40%, #eef2ff 100%);
     }
 
     .glass {
-      background: rgba(255, 255, 255, 0.78);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     .tab-btn.active {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
       color: #ffffff;
-      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.28);
     }
 
     .status-badge {
-      padding: 0.35rem 0.7rem;
+      padding: 0.35rem 0.75rem;
       border-radius: 9999px;
       font-size: 0.72rem;
       font-weight: 700;
@@ -39,39 +43,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-    }
-
-    .modal-backdrop {
-      background: rgba(2, 6, 23, 0.7);
-      backdrop-filter: blur(6px);
-    }
-
-    .table-scroll::-webkit-scrollbar {
-      height: 8px;
-      width: 8px;
-    }
-
-    .table-scroll::-webkit-scrollbar-thumb {
-      background: #94a3b8;
-      border-radius: 999px;
-    }
-
-    .spinner {
-      border: 4px solid #dbeafe;
-      border-top: 4px solid #2563eb;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-    }
-
-    .card-hover {
-      transition: all 0.25s ease;
-    }
-
-    .card-hover:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.09);
+      white-space: nowrap;
     }
 
     .metric-card {
@@ -82,28 +54,24 @@
     .metric-card::after {
       content: "";
       position: absolute;
-      right: -30px;
-      top: -30px;
-      width: 110px;
-      height: 110px;
+      width: 120px;
+      height: 120px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.14);
-    }
-
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #0f172a;
+      top: -36px;
+      right: -36px;
+      background: rgba(255,255,255,0.14);
     }
 
     .soft-input {
       width: 100%;
       border: 1px solid #cbd5e1;
       background: #ffffff;
-      border-radius: 0.85rem;
-      padding: 0.8rem 0.95rem;
+      border-radius: 1rem;
+      padding: 0.85rem 1rem;
       outline: none;
-      transition: all 0.2s ease;
+      transition: 0.2s ease;
+      font-size: 0.95rem;
+      color: #0f172a;
     }
 
     .soft-input:focus {
@@ -112,18 +80,30 @@
     }
 
     .soft-button {
-      border-radius: 0.9rem;
-      padding: 0.8rem 1rem;
-      font-weight: 600;
-      transition: all 0.2s ease;
+      border-radius: 1rem;
+      padding: 0.85rem 1.1rem;
+      font-weight: 700;
+      transition: 0.2s ease;
     }
 
     .soft-button:hover {
       transform: translateY(-1px);
     }
 
-    .gradient-title {
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .table-scroll::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+
+    .table-scroll::-webkit-scrollbar-thumb {
+      background: #94a3b8;
+      border-radius: 999px;
     }
 
     .data-table th {
@@ -139,17 +119,56 @@
 
     .hero-gradient {
       background:
-        linear-gradient(135deg, rgba(37,99,235,1), rgba(59,130,246,0.95) 45%, rgba(14,165,233,0.9));
+        linear-gradient(135deg, #0f172a 0%, #1d4ed8 45%, #0284c7 100%);
+    }
+
+    .modal-backdrop {
+      background: rgba(2, 6, 23, 0.72);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+
+    .spinner {
+      border: 4px solid #dbeafe;
+      border-top: 4px solid #2563eb;
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      animation: spin 1s linear infinite;
+    }
+
+    .banner-collapsed .banner-content {
+      display: none;
+    }
+
+    .banner-collapsed .banner-summary {
+      display: flex;
+    }
+
+    .banner-summary {
+      display: none;
+    }
+
+    .chart-box {
+      position: relative;
+      min-height: 320px;
+    }
+
+    @media (max-width: 640px) {
+      .chart-box {
+        min-height: 280px;
+      }
     }
 
     @keyframes spin {
-      0% { transform: rotate(0deg);}
-      100% { transform: rotate(360deg);}
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body class="min-h-screen text-slate-800">
-  <div id="toastContainer" class="fixed top-4 right-4 z-50 space-y-3"></div>
+
+  <div id="toastContainer" class="fixed top-4 right-4 z-50 space-y-3 max-w-sm"></div>
 
   <div id="loadingOverlay" class="hidden fixed inset-0 z-40 flex items-center justify-center bg-slate-950/40">
     <div class="glass p-6 rounded-2xl shadow-2xl flex items-center gap-4 border border-white/50">
@@ -161,21 +180,73 @@
     </div>
   </div>
 
-  <header class="hero-gradient text-white shadow-xl">
+  <!-- Top Collapsible Banner -->
+  <section id="developerBanner" class="bg-slate-950 text-white border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <div class="banner-summary items-center justify-between gap-3">
+        <div class="text-sm text-slate-200">
+          <span class="font-semibold">Application developed by Opiyo Oscar</span> • 2300701330 • 23/U/1330
+        </div>
+        <button onclick="toggleBanner()" class="text-xs bg-white/10 hover:bg-white/20 px-3 py-2 rounded-lg font-semibold">
+          Expand
+        </button>
+      </div>
+
+      <div class="banner-content">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+          <div class="space-y-2">
+            <p class="text-xs uppercase tracking-[0.2em] text-blue-300 font-semibold">
+              Cloud Computing Project • Makerere University
+            </p>
+            <div class="text-sm md:text-base leading-relaxed text-slate-100">
+              <span class="font-bold">Application developed by Opiyo Oscar</span>,
+              Student Number: <span class="font-semibold">2300701330</span>,
+              Reg Number: <span class="font-semibold">23/U/1330</span>,
+              <span class="font-medium">Software Engineering Year 3 Sem II</span>.
+            </div>
+            <p class="text-sm text-slate-300">
+              This project demonstrates deployment, database integration, monitoring, CI/CD awareness, and responsive user interface design for the
+              <span class="font-semibold">Cloud Computing</span> course in the Software Engineering programme.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-3">
+            <a href="https://opiyo-oscar-student-management-system-production-7a3b.up.railway.app/" target="_blank"
+               class="text-sm bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-xl font-semibold">
+              Live App
+            </a>
+            <a href="https://github.com/OpiyoOscar01/opiyo-oscar-student-management-system.git" target="_blank"
+               class="text-sm bg-emerald-600 hover:bg-emerald-700 px-4 py-2 rounded-xl font-semibold">
+              GitHub Repository
+            </a>
+            <button onclick="toggleBanner()" class="text-sm bg-white/10 hover:bg-white/20 px-4 py-2 rounded-xl font-semibold">
+              Minimise Banner
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <header class="hero-gradient text-white shadow-2xl">
     <div class="max-w-7xl mx-auto px-4 py-6 md:py-8">
       <div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6">
         <div>
-          <p class="uppercase tracking-[0.25em] text-xs text-blue-100 font-semibold mb-2">Makerere University Project</p>
-          <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">Student Management System</h1>
-          <p class="text-blue-100 mt-3 max-w-2xl text-sm md:text-base">
-            A polished university management dashboard with FastAPI, MySQL, Chart.js analytics, responsive UI,
-            and deployment-ready structure for academic marking.
+          <p class="uppercase tracking-[0.25em] text-xs text-cyan-200 font-semibold mb-2">
+            Railway PaaS Deployment • FastAPI • MySQL • Chart.js
+          </p>
+          <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+            Student Management System
+          </h1>
+          <p class="text-blue-100 mt-3 max-w-3xl text-sm md:text-base">
+            A modern, mobile-responsive academic management platform for handling students, courses,
+            enrollments, attendance, analytics, and cloud deployment evidence.
           </p>
         </div>
 
         <div class="glass rounded-2xl p-4 text-slate-900 border border-white/40 min-w-[280px]">
           <p class="text-xs uppercase tracking-widest text-slate-500 font-semibold">System Status</p>
-          <div class="mt-3 flex items-center justify-between">
+          <div class="mt-3 grid grid-cols-2 gap-4">
             <div>
               <p class="text-sm text-slate-500">Backend</p>
               <p id="healthStatus" class="font-bold text-emerald-600">Checking...</p>
@@ -189,41 +260,42 @@
       </div>
 
       <nav class="mt-6 flex flex-wrap gap-3">
-        <button class="tab-btn active px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 transition font-semibold" data-tab="dashboard">Dashboard</button>
-        <button class="tab-btn px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 transition font-semibold" data-tab="students">Students</button>
-        <button class="tab-btn px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 transition font-semibold" data-tab="courses">Courses</button>
-        <button class="tab-btn px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 transition font-semibold" data-tab="enrollments">Enrollments</button>
-        <button class="tab-btn px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 transition font-semibold" data-tab="attendance">Attendance</button>
+        <button class="tab-btn active px-4 md:px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 transition font-semibold" data-tab="dashboard">Dashboard</button>
+        <button class="tab-btn px-4 md:px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 transition font-semibold" data-tab="students">Students</button>
+        <button class="tab-btn px-4 md:px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 transition font-semibold" data-tab="courses">Courses</button>
+        <button class="tab-btn px-4 md:px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 transition font-semibold" data-tab="enrollments">Enrollments</button>
+        <button class="tab-btn px-4 md:px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 transition font-semibold" data-tab="attendance">Attendance</button>
       </nav>
     </div>
   </header>
 
   <main class="max-w-7xl mx-auto px-4 py-6 space-y-6">
-    <!-- DASHBOARD -->
+
+    <!-- Dashboard -->
     <section id="tab-dashboard" class="tab-content space-y-6">
       <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-        <div class="metric-card card-hover rounded-2xl p-5 text-white bg-gradient-to-br from-blue-600 to-blue-700 shadow-lg">
+        <div class="metric-card rounded-2xl p-5 text-white bg-gradient-to-br from-blue-600 to-indigo-700 shadow-lg">
           <p class="text-blue-100 text-sm">Total Students</p>
           <h2 id="statStudents" class="text-4xl font-extrabold mt-3">0</h2>
-          <p class="text-xs mt-3 text-blue-100">Registered student records in the system</p>
+          <p class="text-xs mt-3 text-blue-100">Registered student records</p>
         </div>
 
-        <div class="metric-card card-hover rounded-2xl p-5 text-white bg-gradient-to-br from-emerald-500 to-emerald-600 shadow-lg">
+        <div class="metric-card rounded-2xl p-5 text-white bg-gradient-to-br from-emerald-500 to-teal-600 shadow-lg">
           <p class="text-emerald-50 text-sm">Active Courses</p>
           <h2 id="statCourses" class="text-4xl font-extrabold mt-3">0</h2>
-          <p class="text-xs mt-3 text-emerald-50">Courses currently available for enrollment</p>
+          <p class="text-xs mt-3 text-emerald-50">Courses available for enrollment</p>
         </div>
 
-        <div class="metric-card card-hover rounded-2xl p-5 text-white bg-gradient-to-br from-violet-500 to-violet-600 shadow-lg">
+        <div class="metric-card rounded-2xl p-5 text-white bg-gradient-to-br from-violet-500 to-fuchsia-600 shadow-lg">
           <p class="text-violet-50 text-sm">Active Enrollments</p>
           <h2 id="statEnrollments" class="text-4xl font-extrabold mt-3">0</h2>
-          <p class="text-xs mt-3 text-violet-50">Students currently enrolled in courses</p>
+          <p class="text-xs mt-3 text-violet-50">Current active enrollments</p>
         </div>
 
-        <div class="metric-card card-hover rounded-2xl p-5 text-white bg-gradient-to-br from-amber-500 to-orange-500 shadow-lg">
+        <div class="metric-card rounded-2xl p-5 text-white bg-gradient-to-br from-amber-500 to-orange-500 shadow-lg">
           <p class="text-amber-50 text-sm">Avg Attendance Rate</p>
           <h2 id="statAttendance" class="text-4xl font-extrabold mt-3">0%</h2>
-          <p class="text-xs mt-3 text-amber-50">Average attendance across stored records</p>
+          <p class="text-xs mt-3 text-amber-50">Attendance summary across records</p>
         </div>
       </div>
 
@@ -232,11 +304,13 @@
           <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-5">
             <div>
               <h3 class="section-title">Course Capacity Overview</h3>
-              <p class="text-sm text-slate-500">A cleaner Chart.js horizontal bar chart for capacity vs current enrollment</p>
+              <p class="text-sm text-slate-500">Current enrollment compared with total capacity</p>
             </div>
-            <button onclick="loadDashboard()" class="soft-button bg-blue-600 text-white hover:bg-blue-700">Refresh Dashboard</button>
+            <button onclick="loadDashboard()" class="soft-button bg-blue-600 text-white hover:bg-blue-700">
+              Refresh Dashboard
+            </button>
           </div>
-          <div class="h-[360px]">
+          <div class="chart-box">
             <canvas id="courseCapacityChart"></canvas>
           </div>
         </div>
@@ -244,9 +318,9 @@
         <div class="glass rounded-2xl shadow-lg border border-white/50 p-5">
           <div class="mb-5">
             <h3 class="section-title">Seat Utilization Breakdown</h3>
-            <p class="text-sm text-slate-500">Used seats vs available seats across all active courses</p>
+            <p class="text-sm text-slate-500">Overall occupied versus available course seats</p>
           </div>
-          <div class="h-[360px]">
+          <div class="chart-box">
             <canvas id="utilizationChart"></canvas>
           </div>
         </div>
@@ -256,9 +330,9 @@
         <div class="xl:col-span-2 glass rounded-2xl shadow-lg border border-white/50 p-5">
           <div class="mb-5">
             <h3 class="section-title">Enrollment Trend</h3>
-            <p class="text-sm text-slate-500">Enrollment activity grouped by date from current records</p>
+            <p class="text-sm text-slate-500">Enrollment activity grouped by recorded dates</p>
           </div>
-          <div class="h-[320px]">
+          <div class="chart-box">
             <canvas id="enrollmentTrendChart"></canvas>
           </div>
         </div>
@@ -266,20 +340,20 @@
         <div class="glass rounded-2xl shadow-lg border border-white/50 p-5">
           <div class="mb-4">
             <h3 class="section-title">Recent Enrollments</h3>
-            <p class="text-sm text-slate-500">Latest student-course activity</p>
+            <p class="text-sm text-slate-500">Latest student-course actions in the system</p>
           </div>
           <div id="recentEnrollmentsList" class="space-y-3"></div>
         </div>
       </div>
     </section>
 
-    <!-- STUDENTS -->
+    <!-- Students -->
     <section id="tab-students" class="tab-content hidden space-y-6">
       <div class="grid xl:grid-cols-3 gap-6">
         <div class="glass rounded-2xl shadow-lg border border-white/50 p-6">
           <div class="mb-5">
             <h3 class="section-title">Add New Student</h3>
-            <p class="text-sm text-slate-500">Capture student bio-data and academic profile</p>
+            <p class="text-sm text-slate-500">Capture student bio-data and institutional identity</p>
           </div>
 
           <form id="studentForm" class="space-y-4">
@@ -288,7 +362,9 @@
             <input type="email" id="student_email" placeholder="Email Address" class="soft-input" required />
             <input type="text" id="student_phone" placeholder="Phone Number" class="soft-input" />
             <input type="date" id="student_dob" class="soft-input" />
-            <button type="submit" class="soft-button w-full bg-blue-600 text-white hover:bg-blue-700">Add Student</button>
+            <button type="submit" class="soft-button w-full bg-blue-600 text-white hover:bg-blue-700">
+              Add Student
+            </button>
           </form>
         </div>
 
@@ -319,7 +395,7 @@
       </div>
     </section>
 
-    <!-- COURSES -->
+    <!-- Courses -->
     <section id="tab-courses" class="tab-content hidden space-y-6">
       <div class="grid xl:grid-cols-3 gap-6">
         <div class="glass rounded-2xl shadow-lg border border-white/50 p-6">
@@ -332,9 +408,11 @@
             <input type="text" id="course_code" placeholder="Course Code e.g. CSC1201" class="soft-input" required />
             <input type="text" id="course_name" placeholder="Course Name" class="soft-input" required />
             <input type="number" id="course_credits" min="1" max="6" placeholder="Credits" class="soft-input" required />
-            <textarea id="course_description" placeholder="Course Description" class="soft-input min-h-[100px]"></textarea>
+            <textarea id="course_description" placeholder="Course Description" class="soft-input min-h-[110px]"></textarea>
             <input type="number" id="course_capacity" min="1" placeholder="Maximum Capacity" value="30" class="soft-input" />
-            <button type="submit" class="soft-button w-full bg-blue-600 text-white hover:bg-blue-700">Add Course</button>
+            <button type="submit" class="soft-button w-full bg-blue-600 text-white hover:bg-blue-700">
+              Add Course
+            </button>
           </form>
         </div>
 
@@ -342,7 +420,7 @@
           <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-5">
             <div>
               <h3 class="section-title">Course Catalog</h3>
-              <p class="text-sm text-slate-500">Maintain courses, credits, and enrollment capacity</p>
+              <p class="text-sm text-slate-500">Maintain courses, credits, and enrollment limits</p>
             </div>
             <input id="courseSearch" type="text" placeholder="Search by course code or name" class="soft-input lg:w-80" />
           </div>
@@ -366,25 +444,27 @@
       </div>
     </section>
 
-    <!-- ENROLLMENTS -->
+    <!-- Enrollments -->
     <section id="tab-enrollments" class="tab-content hidden space-y-6">
       <div class="glass rounded-2xl shadow-lg border border-white/50 p-6">
         <div class="mb-5">
           <h3 class="section-title">Enroll Student in Course</h3>
-          <p class="text-sm text-slate-500">Create new enrollment records with duplicate and capacity protection</p>
+          <p class="text-sm text-slate-500">Create enrollment records with duplicate prevention and capacity checks</p>
         </div>
 
         <div class="grid lg:grid-cols-3 gap-4">
           <select id="enrollmentStudentSelect" class="soft-input"></select>
           <select id="enrollmentCourseSelect" class="soft-input"></select>
-          <button onclick="createEnrollment()" class="soft-button bg-blue-600 text-white hover:bg-blue-700">Enroll Student</button>
+          <button onclick="createEnrollment()" class="soft-button bg-blue-600 text-white hover:bg-blue-700">
+            Enroll Student
+          </button>
         </div>
       </div>
 
       <div class="glass rounded-2xl shadow-lg border border-white/50 p-6">
         <div class="mb-5">
           <h3 class="section-title">Enrollment Register</h3>
-          <p class="text-sm text-slate-500">Manage active, dropped, and completed enrollments</p>
+          <p class="text-sm text-slate-500">Manage active, dropped, and completed course participation</p>
         </div>
 
         <div class="overflow-x-auto table-scroll rounded-xl border border-slate-200 bg-white">
@@ -405,18 +485,20 @@
       </div>
     </section>
 
-    <!-- ATTENDANCE -->
+    <!-- Attendance -->
     <section id="tab-attendance" class="tab-content hidden space-y-6">
       <div class="glass rounded-2xl shadow-lg border border-white/50 p-6">
         <div class="mb-5">
           <h3 class="section-title">Attendance Management</h3>
-          <p class="text-sm text-slate-500">Mark class attendance by course and date</p>
+          <p class="text-sm text-slate-500">Mark student attendance by course and date</p>
         </div>
 
         <div class="grid lg:grid-cols-3 gap-4 mb-5">
           <select id="attendanceCourseSelect" class="soft-input"></select>
           <input id="attendanceDate" type="date" class="soft-input" />
-          <button onclick="loadAttendanceStudents()" class="soft-button bg-slate-800 text-white hover:bg-slate-900">Load Students</button>
+          <button onclick="loadAttendanceStudents()" class="soft-button bg-slate-800 text-white hover:bg-slate-900">
+            Load Students
+          </button>
         </div>
 
         <div class="grid md:grid-cols-3 gap-4 mb-6">
@@ -448,15 +530,25 @@
           </table>
         </div>
 
-        <button onclick="saveAttendance()" class="soft-button mt-5 bg-blue-600 text-white hover:bg-blue-700">Save Attendance</button>
+        <button onclick="saveAttendance()" class="soft-button mt-5 bg-blue-600 text-white hover:bg-blue-700">
+          Save Attendance
+        </button>
       </div>
     </section>
   </main>
 
   <footer class="mt-10 bg-slate-950 text-slate-200">
-    <div class="max-w-7xl mx-auto px-4 py-5 flex flex-col md:flex-row justify-between gap-2 text-sm">
-      <p>Student Management System • FastAPI • MySQL • Chart.js • Deployment Ready</p>
-      <p id="footerDateTime"></p>
+    <div class="max-w-7xl mx-auto px-4 py-5 space-y-2 text-sm">
+      <div class="flex flex-col lg:flex-row lg:justify-between gap-2">
+        <p>
+          Student Management System • Cloud Computing Project • Software Engineering • Makerere University
+        </p>
+        <p id="footerDateTime"></p>
+      </div>
+      <div class="text-slate-400">
+        Developed by <span class="font-semibold text-white">Opiyo Oscar</span> • Student Number: <span class="text-white">2300701330</span> •
+        Reg Number: <span class="text-white">23/U/1330</span> • Software Engineering Year 3 Sem II
+      </div>
     </div>
   </footer>
 
@@ -480,7 +572,9 @@
           <option value="graduated">graduated</option>
           <option value="suspended">suspended</option>
         </select>
-        <button type="submit" class="soft-button w-full bg-blue-600 text-white hover:bg-blue-700">Save Student Changes</button>
+        <button type="submit" class="soft-button w-full bg-blue-600 text-white hover:bg-blue-700">
+          Save Student Changes
+        </button>
       </form>
     </div>
   </div>
@@ -503,7 +597,9 @@
           <option value="active">active</option>
           <option value="inactive">inactive</option>
         </select>
-        <button type="submit" class="soft-button w-full bg-blue-600 text-white hover:bg-blue-700">Save Course Changes</button>
+        <button type="submit" class="soft-button w-full bg-blue-600 text-white hover:bg-blue-700">
+          Save Course Changes
+        </button>
       </form>
     </div>
   </div>
@@ -514,6 +610,19 @@
     let utilizationChart = null;
     let enrollmentTrendChart = null;
 
+    function toggleBanner() {
+      const banner = document.getElementById("developerBanner");
+      banner.classList.toggle("banner-collapsed");
+      localStorage.setItem("developerBannerCollapsed", banner.classList.contains("banner-collapsed") ? "yes" : "no");
+    }
+
+    function restoreBannerState() {
+      const collapsed = localStorage.getItem("developerBannerCollapsed");
+      if (collapsed === "yes") {
+        document.getElementById("developerBanner").classList.add("banner-collapsed");
+      }
+    }
+
     function showLoading(show = true) {
       document.getElementById("loadingOverlay").classList.toggle("hidden", !show);
     }
@@ -521,13 +630,14 @@
     function showToast(message, type = "success") {
       const container = document.getElementById("toastContainer");
       const toast = document.createElement("div");
+
       const tone = {
         success: "bg-emerald-600",
         error: "bg-red-600",
         info: "bg-slate-800"
       }[type] || "bg-slate-800";
 
-      toast.className = `${tone} text-white px-4 py-3 rounded-xl shadow-xl max-w-sm animate-[fadeIn_.2s_ease]`;
+      toast.className = `${tone} text-white px-4 py-3 rounded-xl shadow-xl`;
       toast.innerHTML = `<div class="font-medium">${message}</div>`;
       container.appendChild(toast);
       setTimeout(() => toast.remove(), 3500);
@@ -566,7 +676,6 @@
         late: "bg-amber-100 text-amber-700",
         excused: "bg-violet-100 text-violet-700",
       };
-
       return `<span class="status-badge ${map[status] || 'bg-slate-100 text-slate-700'}">${status}</span>`;
     }
 
@@ -595,49 +704,52 @@
       });
 
       const labels = Object.keys(grouped).sort();
-      const values = labels.map(key => grouped[key]);
+      const values = labels.map(k => grouped[k]);
       return { labels, values };
+    }
+
+    function createGradient(ctx, color1, color2) {
+      const gradient = ctx.createLinearGradient(0, 0, 0, 320);
+      gradient.addColorStop(0, color1);
+      gradient.addColorStop(1, color2);
+      return gradient;
     }
 
     function renderCourseCapacityChart(courses) {
       const ctx = document.getElementById("courseCapacityChart").getContext("2d");
       if (courseCapacityChart) courseCapacityChart.destroy();
 
-      const labels = courses.map(c => `${c.course_code}`);
-      const enrolled = courses.map(c => Number(c.current_enrollment));
-      const capacity = courses.map(c => Number(c.max_capacity));
+      const enrolledGradient = createGradient(ctx, "rgba(37,99,235,0.95)", "rgba(14,165,233,0.75)");
+      const capacityGradient = createGradient(ctx, "rgba(16,185,129,0.80)", "rgba(52,211,153,0.50)");
 
       courseCapacityChart = new Chart(ctx, {
         type: "bar",
         data: {
-          labels,
+          labels: courses.map(c => c.course_code),
           datasets: [
             {
               label: "Current Enrollment",
-              data: enrolled,
-              backgroundColor: "rgba(37, 99, 235, 0.88)",
-              borderRadius: 10,
+              data: courses.map(c => Number(c.current_enrollment)),
+              backgroundColor: enrolledGradient,
+              borderRadius: 12,
               borderSkipped: false,
-              barThickness: 18
+              barThickness: 20
             },
             {
               label: "Maximum Capacity",
-              data: capacity,
-              backgroundColor: "rgba(148, 163, 184, 0.45)",
-              borderRadius: 10,
+              data: courses.map(c => Number(c.max_capacity)),
+              backgroundColor: capacityGradient,
+              borderRadius: 12,
               borderSkipped: false,
-              barThickness: 18
+              barThickness: 20
             }
           ]
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          indexAxis: "y",
-          interaction: {
-            mode: "index",
-            intersect: false
-          },
+          indexAxis: window.innerWidth < 768 ? "x" : "y",
+          interaction: { mode: "index", intersect: false },
           plugins: {
             legend: {
               position: "top",
@@ -651,16 +763,14 @@
               backgroundColor: "#0f172a",
               titleColor: "#fff",
               bodyColor: "#e2e8f0",
-              padding: 12,
-              borderColor: "#1e293b",
-              borderWidth: 1
+              padding: 12
             }
           },
           scales: {
             x: {
               beginAtZero: true,
               grid: {
-                color: "rgba(148, 163, 184, 0.15)"
+                color: "rgba(148,163,184,0.14)"
               },
               ticks: {
                 precision: 0
@@ -668,7 +778,7 @@
             },
             y: {
               grid: {
-                display: false
+                display: window.innerWidth < 768
               }
             }
           }
@@ -690,9 +800,10 @@
           labels: ["Used Seats", "Available Seats"],
           datasets: [{
             data: [usedSeats, freeSeats],
-            backgroundColor: ["#2563eb", "#cbd5e1"],
+            backgroundColor: ["#2563eb", "#10b981"],
+            hoverBackgroundColor: ["#1d4ed8", "#059669"],
             borderWidth: 0,
-            hoverOffset: 8
+            hoverOffset: 10
           }]
         },
         options: {
@@ -722,6 +833,8 @@
       if (enrollmentTrendChart) enrollmentTrendChart.destroy();
 
       const grouped = groupEnrollmentsByDate(enrollments);
+      const lineFill = createGradient(ctx, "rgba(124,58,237,0.32)", "rgba(244,114,182,0.05)");
+
       enrollmentTrendChart = new Chart(ctx, {
         type: "line",
         data: {
@@ -730,13 +843,14 @@
             label: "Enrollments",
             data: grouped.values,
             borderColor: "#7c3aed",
-            backgroundColor: "rgba(124, 58, 237, 0.16)",
+            backgroundColor: lineFill,
             fill: true,
             tension: 0.35,
             pointRadius: 4,
             pointHoverRadius: 6,
-            pointBackgroundColor: "#7c3aed",
-            pointBorderWidth: 0
+            pointBackgroundColor: "#ec4899",
+            pointBorderColor: "#ffffff",
+            pointBorderWidth: 2
           }]
         },
         options: {
@@ -763,7 +877,7 @@
               beginAtZero: true,
               ticks: { precision: 0 },
               grid: {
-                color: "rgba(148, 163, 184, 0.18)"
+                color: "rgba(148,163,184,0.15)"
               }
             }
           }
@@ -791,8 +905,8 @@
         const list = document.getElementById("recentEnrollmentsList");
         list.innerHTML = d.recent_enrollments && d.recent_enrollments.length
           ? d.recent_enrollments.map(item => `
-              <div class="rounded-xl border border-slate-200 bg-white p-4">
-                <div class="flex items-start justify-between gap-4">
+              <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                <div class="flex items-start justify-between gap-3">
                   <div>
                     <p class="font-semibold text-slate-900">${item.student_name}</p>
                     <p class="text-sm text-slate-500 mt-1">${item.course_code} • ${item.course_name}</p>
@@ -849,15 +963,11 @@
                 <button
                   onclick='openStudentEdit(${JSON.stringify(student).replace(/'/g, "&apos;")})'
                   class="px-3 py-1.5 rounded-lg bg-amber-500 text-white hover:bg-amber-600 font-medium"
-                >
-                  Edit
-                </button>
+                >Edit</button>
                 <button
                   onclick="deleteStudent(${student.id})"
                   class="px-3 py-1.5 rounded-lg bg-red-600 text-white hover:bg-red-700 font-medium"
-                >
-                  Delete
-                </button>
+                >Delete</button>
               </div>
             </td>
           </tr>
@@ -883,6 +993,11 @@
             ? Math.round((Number(course.current_enrollment) / Number(course.max_capacity)) * 100)
             : 0;
 
+          let barColor = "bg-emerald-500";
+          if (utilization >= 80) barColor = "bg-red-500";
+          else if (utilization >= 60) barColor = "bg-amber-500";
+          else if (utilization >= 40) barColor = "bg-blue-500";
+
           return `
             <tr class="border-b border-slate-200">
               <td class="px-4 py-4 font-semibold text-slate-700">${course.course_code}</td>
@@ -891,11 +1006,12 @@
                 <div class="text-xs text-slate-500 mt-1">${safeText(course.description || "No description")}</div>
               </td>
               <td class="px-4 py-4">${course.credits}</td>
-              <td class="px-4 py-4">
+              <td class="px-4 py-4 min-w-[160px]">
                 <div class="font-medium">${course.current_enrollment}/${course.max_capacity}</div>
-                <div class="w-28 h-2 bg-slate-200 rounded-full mt-2 overflow-hidden">
-                  <div class="h-full bg-blue-600 rounded-full" style="width:${Math.min(utilization, 100)}%"></div>
+                <div class="w-full h-2.5 bg-slate-200 rounded-full mt-2 overflow-hidden">
+                  <div class="h-full ${barColor} rounded-full" style="width:${Math.min(utilization, 100)}%"></div>
                 </div>
+                <div class="text-xs text-slate-500 mt-1">${utilization}% full</div>
               </td>
               <td class="px-4 py-4">${statusBadge(course.status)}</td>
               <td class="px-4 py-4">
@@ -903,15 +1019,11 @@
                   <button
                     onclick='openCourseEdit(${JSON.stringify(course).replace(/'/g, "&apos;")})'
                     class="px-3 py-1.5 rounded-lg bg-amber-500 text-white hover:bg-amber-600 font-medium"
-                  >
-                    Edit
-                  </button>
+                  >Edit</button>
                   <button
                     onclick="deleteCourse(${course.id})"
                     class="px-3 py-1.5 rounded-lg bg-red-600 text-white hover:bg-red-700 font-medium"
-                  >
-                    Delete
-                  </button>
+                  >Delete</button>
                 </div>
               </td>
             </tr>
@@ -959,7 +1071,6 @@
         const data = students || (await apiFetch(`${API}/api/students`)).data;
         const activeStudents = data.filter(s => s.status === "active");
         const select = document.getElementById("enrollmentStudentSelect");
-
         select.innerHTML = `<option value="">Select Student</option>` + activeStudents.map(s =>
           `<option value="${s.id}">${s.student_id} - ${s.first_name} ${s.last_name}</option>`
         ).join("");
@@ -972,7 +1083,6 @@
       try {
         const data = courses || (await apiFetch(`${API}/api/courses`)).data;
         const activeCourses = data.filter(c => c.status === "active");
-
         const options = `<option value="">Select Course</option>` + activeCourses.map(c =>
           `<option value="${c.id}">${c.course_code} - ${c.course_name}</option>`
         ).join("");
@@ -1106,7 +1216,6 @@
       try {
         const res = await apiFetch(`${API}/api/enrollments/course/${courseId}`);
         const tbody = document.getElementById("attendanceTableBody");
-
         const activeRows = res.data.filter(item => item.status !== "dropped");
 
         tbody.innerHTML = activeRows.map(item => `
@@ -1342,7 +1451,14 @@
       document.getElementById("headerClock").textContent = now;
     }
 
+    window.addEventListener("resize", () => {
+      if (document.getElementById("tab-dashboard") && !document.getElementById("tab-dashboard").classList.contains("hidden")) {
+        loadDashboard();
+      }
+    });
+
     async function initPage() {
+      restoreBannerState();
       document.getElementById("attendanceDate").value = new Date().toISOString().slice(0, 10);
       updateClocks();
       setInterval(updateClocks, 1000);
